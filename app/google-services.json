@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "644912716980",
+    "project_id": "carlocation-8179d",
+    "storage_bucket": "carlocation-8179d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644912716980:android:034ae0bf55628809f8cbe1",
+        "android_client_info": {
+          "package_name": "com.example.driveassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644912716980-2iddv10r31tslq1vs7ppdt0niu7sc931.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARGFGIgNmTDr12mFCmGfBjlc0UolX75bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644912716980-2iddv10r31tslq1vs7ppdt0niu7sc931.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644912716980:android:778ee8961df960ebf8cbe1",
+        "android_client_info": {
+          "package_name": "com.romka_po.driveassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644912716980-2iddv10r31tslq1vs7ppdt0niu7sc931.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARGFGIgNmTDr12mFCmGfBjlc0UolX75bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644912716980-2iddv10r31tslq1vs7ppdt0niu7sc931.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
