@@ -13,6 +13,8 @@ class FBTools : FB {
     private val firebaseAuth: FirebaseAuth= FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+
+
     override suspend fun signUpUser(
         email: String,
         password: String
@@ -27,9 +29,7 @@ class FBTools : FB {
     }
 
     override suspend fun signInWithGoogle(acct: GoogleSignInAccount): FirebaseUser? {
-        firebaseAuth.signInWithCredential(
-            GoogleAuthProvider.getCredential(acct.idToken, null)
-        ).await()
+        firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.idToken,null)).await()
         return firebaseAuth.currentUser
     }
 

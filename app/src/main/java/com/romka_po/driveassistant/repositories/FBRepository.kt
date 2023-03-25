@@ -14,9 +14,10 @@ class FBRepository(val fbTools: FBTools) {
         return fbTools.signInUser(email, password)
     }
 
-    suspend fun signInWithGoogle(acct: GoogleSignInAccount): FirebaseUser? {
+    suspend fun signInWithGoogle(acct: GoogleSignInAccount) : FirebaseUser? {
         return fbTools.signInWithGoogle(acct)
     }
+
 
 
     fun getUser(): FirebaseUser? {

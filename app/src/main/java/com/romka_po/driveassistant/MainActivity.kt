@@ -7,11 +7,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.romka_po.driveassistant.databinding.ActivityMainBinding
+import com.vk.api.sdk.utils.VKUtils.getCertificateFingerprint
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id == R.id.navigation_login)
+            if (destination.id == R.id.navigation_login ||
+                destination.id == R.id.navigation_splash ||
+                destination.id == R.id.navigation_register)
                 navView.visibility = View.GONE
             else
                 navView.visibility = View.VISIBLE
@@ -32,5 +35,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         navView.setupWithNavController(navController)
+        val fingerprints = getCertificateFingerprint(this, this.packageName)
+
     }
 }

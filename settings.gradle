@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         jcenter()
         google()
         mavenCentral()
+
     }
 }
 rootProject.name = "DriveAssistant"
