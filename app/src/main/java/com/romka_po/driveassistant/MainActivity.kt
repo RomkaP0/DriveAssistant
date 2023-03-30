@@ -7,7 +7,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.romka_po.driveassistant.databinding.ActivityMainBinding
-import com.vk.api.sdk.utils.VKUtils.getCertificateFingerprint
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         navView.setupWithNavController(navController)
-        val fingerprints = getCertificateFingerprint(this, this.packageName)
 
     }
 }

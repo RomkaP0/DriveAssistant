@@ -51,10 +51,14 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.6.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference:1.2.0'
 
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.10.0"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+
 
     //firebase
 
@@ -70,7 +74,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     //custom library
-    implementation "com.ebanx:swipe-button:0.4.0"
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.mapbox.maps:android:10.12.1'
+
+
 
     //vk
     implementation 'com.vk:android-sdk-core:3.5.1'
