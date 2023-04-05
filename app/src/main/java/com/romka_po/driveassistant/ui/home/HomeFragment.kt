@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        textView = binding.textHome
         val root: View = binding.root
 
         return root
@@ -46,13 +45,37 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBrands()
-
+        viewModel.getModels("VAZ")
         viewModel.brands.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
 //                    hideProgressBar()
                     val data = response.data
                     textView.text = data!![0].name
+//                    checkAll(data!!)
+                }
+
+                is Resource.Error -> {
+//                    hideProgressBar()
+                    response.message?.let { message ->
+//                        Log.e(TAG, message)
+                        Toast.makeText(context, "This BIN isn`t exist", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                is Resource.Loading -> {
+//                    showProgressBar()
+                }
+            }
+        })
+        viewModel.models.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
+                is Resource.Success -> {
+//                    hideProgressBar()
+                    val data = response.data
+                    textView.text = data!![0].name
+                    response.data.forEach {Log.i("Marks", it.name )  }
+
 //                    checkAll(data!!)
                 }
 

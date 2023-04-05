@@ -1,10 +1,12 @@
 package com.romka_po.driveassistant.repositories
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import androidx.activity.ComponentActivity
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import com.romka_po.driveassistant.adapters.FBTools
+import com.romka_po.driveassistant.adapters.VKTools
 
-class FBRepository(val fbTools: FBTools) {
+class FBRepository(val fbTools: FBTools, val vkTools: VKTools) {
 
     suspend fun signUpUser(email: String, password: String): FirebaseUser? {
         return fbTools.signUpUser(email, password)
@@ -14,11 +16,13 @@ class FBRepository(val fbTools: FBTools) {
         return fbTools.signInUser(email, password)
     }
 
-    suspend fun signInWithGoogle(acct: GoogleSignInAccount) : FirebaseUser? {
-        return fbTools.signInWithGoogle(acct)
+    suspend fun signInWithGoogle(credential: AuthCredential) : FirebaseUser? {
+        return fbTools.signInWithGoogle(credential)
     }
 
-
+//    fun signInWithVK(activity: Activity):UserId{
+//        return fbTools.signInWithVK(activity)
+//    }
 
     fun getUser(): FirebaseUser? {
         return fbTools.getUser()
@@ -27,5 +31,15 @@ class FBRepository(val fbTools: FBTools) {
     suspend fun sendForgotPassword(email: String): Boolean {
         fbTools.sendForgotPassword(email)
         return true
+    }
+
+    fun registerVKAuthProvider(activity: ComponentActivity){
+        return vkTools.registerVKAuthProvider(activity)
+    }
+    fun launchVKAuthProvider(){
+        return vkTools.launchVKAuthProvider()
+    }
+    fun getVKEmail(): String{
+        return vkTools.getVKEmail()
     }
 }

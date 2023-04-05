@@ -17,15 +17,23 @@ class HomeViewModel(private val autoAPIRepository: AutoAPIRepository) : ViewMode
     fun getBrands() = viewModelScope.launch {
         brands.postValue(Resource.Loading())
         val responce = autoAPIRepository.getBrands()
-        brands.postValue(handleInfoCarResponse(responce))
+        brands.postValue(handleInfoCarModelResponse(responce))
     }
-//    fun getModels(brand_name:String) = viewModelScope.launch {
-//        models.postValue(Resource.Loading())
-//        val responce = autoAPIRepository.getModels(brand_name)
-//        models.postValue(handleInfoCarResponse(responce) as Resource<List<Model>>)
-//    }
+    fun getModels(brand_name:String) = viewModelScope.launch {
+        models.postValue(Resource.Loading())
+        val responce = autoAPIRepository.getModels(brand_name)
+        models.postValue(handleInfoCarResponse(responce))
+    }
 
-    private fun handleInfoCarResponse(responce: Response<List<Brand>>): Resource<List<Brand>> {
+    private fun handleInfoCarModelResponse(responce: Response<List<Brand>>): Resource<List<Brand>> {
+        if (responce.isSuccessful){
+            responce.body()?.let { resultResponce ->
+                return Resource.Success(resultResponce)
+            }
+        }
+        return Resource.Error(responce.message())
+    }
+    private fun handleInfoCarResponse(responce: Response<List<Model>>): Resource<List<Model>> {
         if (responce.isSuccessful){
             responce.body()?.let { resultResponce ->
                 return Resource.Success(resultResponce)

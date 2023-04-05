@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.romka_po.driveassistant.R
 import com.romka_po.driveassistant.adapters.FBTools
+import com.romka_po.driveassistant.adapters.VKTools
 import com.romka_po.driveassistant.databinding.FragmentSplashBinding
 import com.romka_po.driveassistant.repositories.FBRepository
 
@@ -34,7 +35,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val repository = FBRepository(FBTools())
+        val repository = FBRepository(FBTools(), VKTools())
         val viewModelProviderFactory = SplashViewModelProviderFactory(repository)
         viewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(SplashViewModel::class.java)

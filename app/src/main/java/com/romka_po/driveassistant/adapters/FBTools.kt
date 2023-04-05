@@ -1,18 +1,16 @@
 package com.romka_po.driveassistant.adapters
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.romka_po.driveassistant.interfaces.FB
 import com.romka_po.driveassistant.model.User
 import kotlinx.coroutines.tasks.await
 
 class FBTools : FB {
-    private val firebaseAuth: FirebaseAuth= FirebaseAuth.getInstance()
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-
 
 
     override suspend fun signUpUser(
@@ -28,10 +26,12 @@ class FBTools : FB {
         return firebaseAuth.currentUser
     }
 
-    override suspend fun signInWithGoogle(acct: GoogleSignInAccount): FirebaseUser? {
-        firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(acct.idToken,null)).await()
+    override suspend fun signInWithGoogle(credential: AuthCredential): FirebaseUser? {
+        firebaseAuth.signInWithCredential(credential)
+            .await()
         return firebaseAuth.currentUser
     }
+
 
     override fun signOut(): FirebaseUser? {
         TODO("Not yet implemented")

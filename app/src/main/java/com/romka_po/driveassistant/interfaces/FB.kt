@@ -1,6 +1,6 @@
 package com.romka_po.driveassistant.interfaces
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 
 interface FB {
@@ -8,7 +8,8 @@ interface FB {
 
     suspend fun signInUser(email: String, password: String):FirebaseUser?
 
-    suspend fun signInWithGoogle(acct: GoogleSignInAccount):FirebaseUser?
+    suspend fun signInWithGoogle(credential: AuthCredential):FirebaseUser?
+
 
     fun signOut():FirebaseUser?
 
