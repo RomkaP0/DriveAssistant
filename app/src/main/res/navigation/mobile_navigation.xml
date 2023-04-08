@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.romka_po.driveassistant.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_dialogWithData"
+            app:destination="@id/dialogWithData" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -58,4 +62,13 @@
             android:id="@+id/action_registerFragment_to_navigation_login"
             app:destination="@id/navigation_login" />
     </fragment>
+    <dialog
+        android:id="@+id/dialogWithData"
+        android:name="com.romka_po.driveassistant.ui.DialogWithData"
+        android:label="DialogWithData"
+        tools:layout="@layout/dialog_brand">
+        <action
+            android:id="@+id/action_dialogWithData_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </dialog>
 </navigation>

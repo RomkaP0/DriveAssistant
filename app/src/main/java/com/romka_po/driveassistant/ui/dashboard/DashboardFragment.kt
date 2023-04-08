@@ -12,14 +12,15 @@ import com.mapbox.maps.Style
 import com.romka_po.driveassistant.adapters.CheckRVAdapter
 import com.romka_po.driveassistant.databinding.FragmentDashboardBinding
 import com.romka_po.driveassistant.model.Check
-import com.romka_po.driveassistant.utils.CheckIcon
+import com.romka_po.driveassistant.model.MapOfResource
+import com.romka_po.driveassistant.utils.GetIcon
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private lateinit var checkRVAdapter: CheckRVAdapter
-    lateinit var checkIcon: CheckIcon
     lateinit var mapView: MapView
+    private var mapOfRes = MapOfResource.mapOfResource
 
 
     // This property is only valid between onCreateView and
@@ -47,11 +48,12 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        checkIcon = CheckIcon()
         val list = mutableListOf<Check>()
-        for (i in 0..13){
-            list.add(Check("Engine", checkIcon.getCheckIcon("Engine"),0.0,40000.0))
+        mapOfRes.keys.forEach {
+            list.add(Check(it,GetIcon().getCheckIcon(it), mapOfRes[it]!!,40000.0))
+
         }
+
         checkRVAdapter.differ.submitList(list)
 
     }
@@ -70,6 +72,10 @@ class DashboardFragment : Fragment() {
 
         }
     }
+
+
+
+
 
 
 

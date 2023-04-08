@@ -5,7 +5,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.romka_po.driveassistant.interfaces.FB
-import com.romka_po.driveassistant.model.User
 import kotlinx.coroutines.tasks.await
 
 class FBTools : FB {
@@ -37,9 +36,7 @@ class FBTools : FB {
         TODO("Not yet implemented")
     }
 
-    fun saveUser(email: String, name: String) = firestore.collection("users").document(email).set(
-        User(email, name)
-    )
+    override fun saveResource(email: String, map:HashMap<String,Double>) = firestore.collection("users_data").document(email).set(map)
 
     override fun getUser(): FirebaseUser? {
         return firebaseAuth.currentUser

@@ -1,15 +1,15 @@
 package com.romka_po.driveassistant.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.romka_po.driveassistant.R
 import com.romka_po.driveassistant.databinding.FragmentHomeBinding
 import com.romka_po.driveassistant.factories.ViewModelProviderFactory
 import com.romka_po.driveassistant.model.Resource
@@ -22,8 +22,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    var bundle:Bundle = Bundle()
     lateinit var viewModel: HomeViewModel
-    lateinit var textView: TextView
 
 
     override fun onCreateView(
@@ -45,14 +45,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBrands()
-        viewModel.getModels("VAZ")
         viewModel.brands.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
 //                    hideProgressBar()
                     val data = response.data
-                    textView.text = data!![0].name
-//                    checkAll(data!!)
+                    bundle.putParcelableArray("helo", data?.toTypedArray())
+
                 }
 
                 is Resource.Error -> {
@@ -73,8 +72,8 @@ class HomeFragment : Fragment() {
                 is Resource.Success -> {
 //                    hideProgressBar()
                     val data = response.data
-                    textView.text = data!![0].name
-                    response.data.forEach {Log.i("Marks", it.name )  }
+//                    textView.text = data!![0].name
+//                    response.data.forEach {Log.i("Marks", it.name )  }
 
 //                    checkAll(data!!)
                 }
@@ -92,6 +91,15 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+        binding.brand.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_dialogWithData)
+        }
+        binding.brand.setOnClickListener {
+            if (bundle.containsKey("helo"))
+                findNavController().navigate(R.id.action_navigation_home_to_dialogWithData, bundle)
+            else
+                Toast.makeText(context, "No bundle", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

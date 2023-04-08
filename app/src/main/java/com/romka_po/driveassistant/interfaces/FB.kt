@@ -1,5 +1,6 @@
 package com.romka_po.driveassistant.interfaces
 
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 
@@ -10,7 +11,7 @@ interface FB {
 
     suspend fun signInWithGoogle(credential: AuthCredential):FirebaseUser?
 
-
+    fun saveResource(email: String, map:HashMap<String,Double>): Task<Void>
     fun signOut():FirebaseUser?
 
     fun getUser():FirebaseUser?

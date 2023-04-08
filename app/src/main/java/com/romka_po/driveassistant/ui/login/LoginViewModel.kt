@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.romka_po.driveassistant.R
 import com.romka_po.driveassistant.interfaces.GoogleOnSignInStartedListener
+import com.romka_po.driveassistant.model.MapOfResource
 import com.romka_po.driveassistant.repositories.FBRepository
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -50,6 +51,8 @@ class LoginViewModel(
             val user = repository.signInUser(email, password)
             user?.let {
                 fbUser.postValue(it)
+                repository.saveResource(it.email!!, MapOfResource.mapOfResource)
+
 //                eventsChannel.send(AllEvents.Message("login success"))
             }
         } catch (e: Exception) {
@@ -68,6 +71,8 @@ class LoginViewModel(
             val user = repository.signInWithGoogle(credential)
             user?.let {
                 fbUser.postValue(it)
+                repository.saveResource(it.email!!, MapOfResource.mapOfResource)
+
 //                eventsChannel.send(AllEvents.Message("login success"))
             }
         } catch (e: Exception) {
@@ -102,6 +107,8 @@ class LoginViewModel(
                 val user = repository.signInUser(email, password)
                 user?.let {
                     fbUser.postValue(it)
+                    repository.saveResource(it.email!!, MapOfResource.mapOfResource)
+
 //                eventsChannel.send(AllEvents.Message("login success"))
                 }
             } catch (e: FirebaseAuthInvalidUserException) {
@@ -109,6 +116,7 @@ class LoginViewModel(
                     val user = repository.signUpUser(email, password)
                     user?.let {
                         fbUser.postValue(it)
+                        repository.saveResource(it.email!!, MapOfResource.mapOfResource)
 //                eventsChannel.send(AllEvents.Message("sign up success"))
                     }
                 } catch (e: Exception) {

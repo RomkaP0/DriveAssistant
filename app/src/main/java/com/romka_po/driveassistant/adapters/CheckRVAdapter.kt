@@ -43,7 +43,7 @@ class CheckRVAdapter : RecyclerView.Adapter<CheckRVAdapter.CheckViewHolder>() {
 
         holder.binding.apply {
             rvcategory.text = check.name
-//            rvimage.setImageResource()
+            rvimage.setImageResource(check.image)
             rvdistance.text = check.start.roundToInt().toString()
             rvmax.text = check.end.roundToInt().toString()
         }

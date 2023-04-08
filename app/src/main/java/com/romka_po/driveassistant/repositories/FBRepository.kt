@@ -1,6 +1,7 @@
 package com.romka_po.driveassistant.repositories
 
 import androidx.activity.ComponentActivity
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import com.romka_po.driveassistant.adapters.FBTools
@@ -41,5 +42,8 @@ class FBRepository(val fbTools: FBTools, val vkTools: VKTools) {
     }
     fun getVKEmail(): String{
         return vkTools.getVKEmail()
+    }
+    fun saveResource(email: String, map:HashMap<String,Double>): Task<Void> {
+        return fbTools.saveResource(email,map)
     }
 }

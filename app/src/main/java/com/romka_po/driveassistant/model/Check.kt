@@ -5,4 +5,6 @@ data class Check (
     var image:Int = 0,
     var start:Double = 0.0,
     var end:Double = 0.0
+
+
 )

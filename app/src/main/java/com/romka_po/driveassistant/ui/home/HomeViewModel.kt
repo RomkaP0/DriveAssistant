@@ -13,6 +13,11 @@ import retrofit2.Response
 class HomeViewModel(private val autoAPIRepository: AutoAPIRepository) : ViewModel() {
     val brands:MutableLiveData<Resource<List<Brand>>> = MutableLiveData()
     val models:MutableLiveData<Resource<List<Model>>> = MutableLiveData()
+    val brand = MutableLiveData<String>()
+
+    fun sendBrand(text: String) {
+        brand.value = text
+    }
 
     fun getBrands() = viewModelScope.launch {
         brands.postValue(Resource.Loading())
