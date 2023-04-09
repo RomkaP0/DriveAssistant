@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,7 @@ class DialogWithData : DialogFragment() {
         brandAdapter.setOnItemClickListener {
             bundle.putString("key", it.id)
             Toast.makeText(context, it.id, Toast.LENGTH_SHORT).show()
-            dialog?.dismiss()
+            findNavController().navigate(R.id.action_dialogWithData_to_navigation_home, bundle)
         }
 
     }

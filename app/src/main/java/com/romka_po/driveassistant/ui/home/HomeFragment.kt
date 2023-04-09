@@ -9,11 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.romka_po.driveassistant.R
+import com.romka_po.driveassistant.adapters.ModelRVAdapter
 import com.romka_po.driveassistant.databinding.FragmentHomeBinding
 import com.romka_po.driveassistant.factories.ViewModelProviderFactory
 import com.romka_po.driveassistant.model.Resource
 import com.romka_po.driveassistant.repositories.AutoAPIRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +29,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     var bundle:Bundle = Bundle()
     lateinit var viewModel: HomeViewModel
+    private lateinit var modelRVAdapter: ModelRVAdapter
+
 
 
     override fun onCreateView(
@@ -44,6 +51,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
         viewModel.getBrands()
         viewModel.brands.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
@@ -72,6 +80,7 @@ class HomeFragment : Fragment() {
                 is Resource.Success -> {
 //                    hideProgressBar()
                     val data = response.data
+                    modelRVAdapter.differ.submitList(data)
 //                    textView.text = data!![0].name
 //                    response.data.forEach {Log.i("Marks", it.name )  }
 
@@ -91,6 +100,13 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+
+
+
+
+
+
         binding.brand.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_dialogWithData)
         }
@@ -105,5 +121,28 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val key = arguments?.getString("key", null)
+        var job: Job? = null
+        key?.let {
+            binding.brand.setText(key)
+            job?.cancel()
+            job = MainScope().launch { viewModel.getModels(it) }
+
+        }
+
+    }
+    fun setupRecyclerView(){
+        modelRVAdapter = ModelRVAdapter()
+
+        binding.rvModel.apply {
+            adapter = modelRVAdapter
+            layoutManager = LinearLayoutManager(context)
+
+        }
+
     }
 }
