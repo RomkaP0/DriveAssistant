@@ -33,7 +33,8 @@ class FBTools : FB {
 
 
     override fun signOut(): FirebaseUser? {
-        TODO("Not yet implemented")
+        firebaseAuth.signOut()
+        return firebaseAuth.currentUser
     }
 
     override fun saveResource(email: String, map:HashMap<String,Double>) = firestore.collection("users_data").document(email).set(map)

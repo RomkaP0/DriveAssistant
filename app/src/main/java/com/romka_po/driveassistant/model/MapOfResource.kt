@@ -13,5 +13,4 @@ object MapOfResource {
     "Grm" to 0.0,
     "Piston" to 0.0
     )
-
 }

@@ -1,12 +1,14 @@
+package com.romka_po.driveassistant.adapters.rvadapters
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.romka_po.driveassistant.databinding.ItemBrandBinding
 import com.romka_po.driveassistant.model.Brand
 
-class BrandAdapter(
+class BrandRVAdapter(
     var languageList: Array<Brand>,
-) : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<BrandRVAdapter.ViewHolder>() {
 
     // create an inner class with name ViewHolder
     // It takes a view argument, in which pass the generated class of single_item.xml

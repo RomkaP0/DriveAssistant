@@ -11,6 +11,14 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/placeholder"
+        android:title="" />
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/title_chat" />
+
+    <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/settings"
         android:title="@string/title_settings" />

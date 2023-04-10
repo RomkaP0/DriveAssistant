@@ -15,6 +15,7 @@
 
         <!-- Customize your theme here. -->
     </style>
+
     <style name="TextInputLayoutNoBorder" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="errorIconDrawable">@null</item>
         <item name="errorIconTint">@null</item>
@@ -31,5 +32,20 @@
         <item name="tabTextColor">@color/black</item>
     </style>
 
+    <style name="Theme.DriveAssistant.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.DriveAssistant.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.DriveAssistant.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="Theme.Fab_Bottom_app_bar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#0F9D58</item>
+        <item name="colorPrimaryVariant">#0F9D58</item>
+        <item name="colorOnPrimary">#000</item>
+    </style>
 
 </resources>

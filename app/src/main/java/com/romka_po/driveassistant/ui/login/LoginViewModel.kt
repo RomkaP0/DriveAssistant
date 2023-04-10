@@ -19,8 +19,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val repository: FBRepository,
-//    private val networkControl: NetWorkAdapter,
-//    private val firebaseAuth: FirebaseAuth
+
     private val application: Application, private val listener: GoogleOnSignInStartedListener
 ) :
     AndroidViewModel(application = application) {

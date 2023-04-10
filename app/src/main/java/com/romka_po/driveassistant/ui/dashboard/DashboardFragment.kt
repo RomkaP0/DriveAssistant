@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
-import com.romka_po.driveassistant.adapters.CheckRVAdapter
+import com.romka_po.driveassistant.adapters.rvadapters.CheckRVAdapter
 import com.romka_po.driveassistant.databinding.FragmentDashboardBinding
 import com.romka_po.driveassistant.model.Check
 import com.romka_po.driveassistant.model.MapOfResource

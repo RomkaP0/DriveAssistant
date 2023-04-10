@@ -1,6 +1,6 @@
 package com.romka_po.driveassistant.ui
 
-import BrandAdapter
+import com.romka_po.driveassistant.adapters.rvadapters.BrandRVAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,7 +24,7 @@ class DialogWithData : DialogFragment() {
         const val TAG = "DialogWithData"
 
     }
-    private lateinit var brandAdapter:BrandAdapter
+    private lateinit var brandRVAdapter: BrandRVAdapter
     private var _binding: DialogBrandBinding? = null
     val bundle = Bundle()
 
@@ -50,7 +50,7 @@ class DialogWithData : DialogFragment() {
         }
         setupRecyclerView()
 
-        brandAdapter.setOnItemClickListener {
+        brandRVAdapter.setOnItemClickListener {
             bundle.putString("key", it.id)
             Toast.makeText(context, it.id, Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_dialogWithData_to_navigation_home, bundle)
@@ -72,13 +72,13 @@ class DialogWithData : DialogFragment() {
     private fun setupRecyclerView(){
         val arg = requireArguments().getParcelableArray("helo") as Array<*>
         Log.d("Size", arg.size.toString())
-        brandAdapter = BrandAdapter(
+        brandRVAdapter = BrandRVAdapter(
             arg as Array<Brand>
         )
         val itemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
 
         binding.rvBrand.apply {
-            adapter = brandAdapter
+            adapter = brandRVAdapter
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(itemDecoration)
 

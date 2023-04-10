@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.romka_po.driveassistant.R
-import com.romka_po.driveassistant.adapters.ModelRVAdapter
+import com.romka_po.driveassistant.adapters.rvadapters.ModelRVAdapter
 import com.romka_po.driveassistant.databinding.FragmentHomeBinding
 import com.romka_po.driveassistant.factories.ViewModelProviderFactory
 import com.romka_po.driveassistant.model.Resource

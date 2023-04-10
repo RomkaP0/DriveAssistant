@@ -21,9 +21,10 @@ class FBRepository(val fbTools: FBTools, val vkTools: VKTools) {
         return fbTools.signInWithGoogle(credential)
     }
 
-//    fun signInWithVK(activity: Activity):UserId{
-//        return fbTools.signInWithVK(activity)
-//    }
+
+    fun signOut():FirebaseUser?{
+        return fbTools.signOut()
+    }
 
     fun getUser(): FirebaseUser? {
         return fbTools.getUser()

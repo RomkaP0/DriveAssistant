@@ -1,4 +1,4 @@
-package com.romka_po.driveassistant.adapters
+package com.romka_po.driveassistant.adapters.rvadapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
